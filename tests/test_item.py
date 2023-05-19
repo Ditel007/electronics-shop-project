@@ -20,6 +20,7 @@ def test_apply_discount(item):
 
 
 def test_all_items():
-    item1 = Item("item1", 10.0, 5)
-    item2 = Item("item2", 20.0, 3)
-    assert Item.all == [item1, item2]
+    if __name__ == "__main__":
+        item1 = Item("item1", 10, 5)
+        item2 = Item("item2", 20, 3)
+        assert Item.all == [item1, item2]
