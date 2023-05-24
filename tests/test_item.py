@@ -9,6 +9,14 @@ def item():
     return Item("item1", 10.0, 5)
 
 
+def test__repr__(item):
+    assert repr(item) == "Item('item1', 10.0, 5)"
+
+
+def test__str__(item):
+    assert str(item) == 'item1'
+
+
 def test_calculate_total_price(item):
     assert item.calculate_total_price() == 50.0
 
