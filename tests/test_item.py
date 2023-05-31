@@ -2,6 +2,7 @@
 import pytest as pytest
 
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
@@ -49,3 +50,12 @@ def test_string_to_number(item):
     """Тестирует метод string_to_number."""
     assert item.string_to_number("10000") == 10000
     assert item.string_to_number("2.034") == 2
+
+
+item1 = Item("Patifon", 10000, 20)
+phone1 = Phone("Pixel 3XL", 120_000, 16, 2)
+
+
+def test__add__classes():
+    assert item1 + phone1 == 36
+    assert phone1 + phone1 == 32
