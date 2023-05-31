@@ -71,3 +71,8 @@ class Item:
     def string_to_number(number: str) -> int:
         """Преобразование строки в число."""
         return int(number.split(".")[0])
+
+    def __add__(self, other: 'Item') -> int:
+        if not isinstance(other, Item):
+            raise TypeError('Нельзя складывать разные классы')
+        return self.quantity + other.quantity
