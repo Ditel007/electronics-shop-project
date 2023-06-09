@@ -62,12 +62,13 @@ def test__add__classes():
 
 
 def test_exception_instantiate_from_csv():
-    # Item.file_name = '132'
-    # with pytest.raises(FileNotFoundError) as f:
-    #     Item.instantiate_from_csv()
-    # assert str(f.value) == f'Отсутствует файл {Item.file_name}'
+    if __name__ == "__main__":
+        Item.file_name = '132'
+        with pytest.raises(FileNotFoundError) as f:
+            Item.instantiate_from_csv()
+        assert str(f.value) == f'Отсутствует файл {Item.file_name}'
 
-    Item.file_name = 'items_test.csv'
-    with pytest.raises(InstantiateCSVError) as e:
-        Item.instantiate_from_csv()
-    assert str(e.value) == f'Файл {Item.file_name} поврежден'
+        Item.file_name = 'items_test.csv'
+        with pytest.raises(InstantiateCSVError) as e:
+            Item.instantiate_from_csv()
+        assert str(e.value) == f'Файл {Item.file_name} поврежден'
