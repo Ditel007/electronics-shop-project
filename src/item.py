@@ -27,9 +27,6 @@ class Item:
 
         Item.all.append(self)
 
-        # assert repr(item1) == "Item('Смартфон', 10000, 20)"
-        # assert str(item1) == 'Смартфон'
-
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
 
@@ -66,9 +63,9 @@ class Item:
         self.__name = str_line
 
     @classmethod
-    def instantiate_from_csv(cls, PATH_TO_CSV='../src/items.csv'):
+    def instantiate_from_csv(cls):
         try:
-            with open(PATH_TO_CSV, encoding='windows-1251') as file:
+            with open(f'../src/{cls.file_name}', encoding='windows-1251') as file:
                 reader = csv.DictReader(file)
                 if len(list(csv.DictReader(file))[0]) != 3:
                     raise InstantiateCSVError(f'Файл {cls.file_name} поврежден')
@@ -76,9 +73,6 @@ class Item:
                     cls.all.append((data['name'], float(data['price']), int(data['quantity'])))
         except FileNotFoundError:
             raise FileNotFoundError(f'Отсутствует файл {cls.file_name}')
-        except PermissionError:
-            print(f'Невозможно создать файл {cls.file_name}')
-
 
     @staticmethod
     def string_to_number(number: str) -> int:
